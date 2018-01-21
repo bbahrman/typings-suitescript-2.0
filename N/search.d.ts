@@ -175,8 +175,18 @@ interface SearchLookupFieldsOptions {
 }
 
 interface SearchLookupFieldsFunction {
-    promise(options: SearchLookupFieldsOptions): Promise<any>;
-    (options: SearchLookupFieldsOptions): any;
+    promise(options: SearchLookupFieldsOptions): Promise<SearchLookupResult | SearchLookupResult[]>;
+    (options: SearchLookupFieldsOptions): SearchLookupResult | SearchLookupResult[]
+}
+
+interface SearchLookupResult {
+    id: string;
+    value: string | number | SearchLookupListValue | SearchLookupListValue[];
+}
+
+interface SearchLookupListValue {
+    value: number;
+    text: string;
 }
 
 interface SearchGlobalOptions {
